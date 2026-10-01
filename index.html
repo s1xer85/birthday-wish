@@ -1935,8 +1935,8 @@
     }
 
     .balloon-body {
-      width: 48px;
-      height: 58px;
+      width: 24px;
+      height: 29px;
       border-radius: 50% 50% 50% 50% / 40% 40% 60% 60%;
       position: relative;
       box-shadow: inset -4px -6px 12px rgba(0, 0, 0, 0.15), inset 4px 6px 12px rgba(255, 255, 255, 0.45);
@@ -1947,8 +1947,8 @@
       position: absolute;
       top: 9px;
       left: 11px;
-      width: 11px;
-      height: 20px;
+      width: 6px;
+      height: 10px;
       border-radius: 50%;
       background: rgba(255, 255, 255, 0.75);
       transform: rotate(-35deg);
@@ -1960,8 +1960,8 @@
       bottom: -5px;
       left: 50%;
       transform: translateX(-50%);
-      width: 7px;
-      height: 6px;
+      width: 4px;
+      height: 3px;
       background: inherit;
       border-radius: 2px;
       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
@@ -1969,26 +1969,13 @@
 
     .balloon-string {
       position: absolute;
-      bottom: -48px;
+      bottom: -24px;
       left: 50%;
       transform: translateX(-50%);
       width: 1.5px;
-      height: 48px;
+      height: 24px;
       background: rgba(200, 180, 195, 0.75);
       box-shadow: 0 0 2px rgba(0, 0, 0, 0.1);
-    }
-
-    /* Heart balloon */
-    .heart-balloon {
-      font-size: 46px;
-      position: relative;
-      filter: drop-shadow(0 8px 18px rgba(255, 78, 131, 0.5));
-    }
-
-    .heart-balloon .balloon-string {
-      bottom: -40px;
-      height: 42px;
-      background: rgba(255, 105, 180, 0.6);
     }
 
     /* Floating Petal */
@@ -2230,7 +2217,7 @@
   <div id="pageLoader" class="show">
     <div class="wrap">
       <div class="spinner"></div>
-    <div class="text">Loading experience...</div>
+    <div class="text" id="pageLoaderText">Preparing your birthday surprise...</div>
     </div>
   </div>
   <!-- Interactive Gift Box Component -->
@@ -2265,20 +2252,42 @@
       }
 
       showLoader();
-
-      setTimeout(() => {
+      async function waitForAllResources() {
+        const images = Array.from(document.images);
+        const imagePromises = images.map((image) => {
+          if (image.complete && image.naturalWidth > 0) {
+            return image.decode ? image.decode().catch(() => {}) : Promise.resolve();
+          }
+          return new Promise((resolve) => {
+            const finish = () => resolve();
+            image.addEventListener('load', finish, { once: true });
+            image.addEventListener('error', finish, { once: true });
+          });
+        });
+        const windowLoaded = document.readyState === 'complete'
+          ? Promise.resolve()
+          : new Promise((resolve) => window.addEventListener('load', resolve, { once: true }));
+        const fontsReady = document.fonts && document.fonts.ready ? document.fonts.ready : Promise.resolve();
+        await Promise.all([windowLoaded, fontsReady, ...imagePromises]);
+      }
+      (async function finishLoading() {
         try {
+          const loaderText = document.getElementById('pageLoaderText');
+          if (loaderText) loaderText.textContent = 'Loading every celebration detail...';
+          await waitForAllResources();
           window.textLetterH2 = typeof mockData.titleLetter === 'string' ? mockData.titleLetter : '';
           window.textLetterP = typeof mockData.contentLetter === 'string' ? mockData.contentLetter : '';
           applyData(mockData);
-          hideLoader();
-          document.body.classList.add('is-loaded');
         } catch (e) {
-          console.error('Initialization error:', e);
+          console.error('Resource loading warning:', e);
+          window.textLetterH2 = typeof mockData.titleLetter === 'string' ? mockData.titleLetter : '';
+          window.textLetterP = typeof mockData.contentLetter === 'string' ? mockData.contentLetter : '';
+          applyData(mockData);
+        } finally {
           hideLoader();
           document.body.classList.add('is-loaded');
         }
-      }, 1200);
+      })();
     })();
 
     // Gift box interaction and scene transition trigger
@@ -2366,7 +2375,6 @@
         var b = document.createElement('div');
         b.className = 'floating-balloon';
         
-        var isHeart = Math.random() > 0.45;
         
         // Pick sector in round-robin to guarantee 100% even coverage on all sides
         var sector = preferredSector !== undefined ? balloonSectors[preferredSector % balloonSectors.length] : balloonSectors[currentBalloonSectorIdx];
@@ -2382,12 +2390,8 @@
         b.style.left = startX + 'vw';
         b.style.transform = 'scale(' + scale + ')';
 
-        if (isHeart) {
-          b.innerHTML = '<div class="heart-balloon">💖<div class="balloon-string"></div></div>';
-        } else {
-          var bg = balloonColors[Math.floor(Math.random() * balloonColors.length)];
-          b.innerHTML = '<div class="balloon-body" style="background: ' + bg + ';"><div class="balloon-knot" style="background: ' + bg + ';"></div><div class="balloon-string"></div></div>';
-        }
+        var bg = balloonColors[Math.floor(Math.random() * balloonColors.length)];
+        b.innerHTML = '<div class="balloon-body" style="background: ' + bg + ';"><div class="balloon-knot" style="background: ' + bg + ';"></div><div class="balloon-string"></div></div>';
 
         sky.appendChild(b);
 

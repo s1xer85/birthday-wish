@@ -1,135 +1,102 @@
-# ✨ Interactive Birthday Celebration Web Experience
+# Birthday Wish — Interactive Celebration
 
-[![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/HTML)
-[![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/CSS)
-[![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
-[![Anime.js](https://img.shields.io/badge/Anime.js-FF4E83?style=for-the-badge&logo=javascript&logoColor=white)](https://animejs.com/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](https://opensource.org/licenses/MIT)
+A polished, responsive birthday surprise built with **HTML, CSS, and vanilla JavaScript**. Open the gift box, follow the animated letter journey, explore the cake and memory scenes, scratch the surprise vouchers, and enjoy the finale celebration.
 
-An immersive, multi-stage interactive birthday greeting web application engineered with modern web technologies, fluid 60 FPS animations, realistic physics-inspired interactions, and responsive glassmorphic aesthetics.
+## Live page
 
----
+- **Website:** https://s1xer85.github.io/birthday-wish/
+- **Repository:** https://github.com/s1xer85/birthday-wish
 
-## 🌟 Overview
+> The page is static and has no build step or server-side dependencies.
 
-This web experience transforms a traditional birthday greeting into an unforgettable, gamified visual journey. From the initial mystery gift box to an interactive candle blow-out, Polaroid memory gallery, scratch-off vouchers, and a grand finale celebration with floating atmospheric balloons and fireworks, every element is designed to spark joy and excitement.
+## Highlights
 
----
+- Interactive gift-box opening sequence
+- Resource-aware loading screen that waits for images, fonts, and the browser `load` event before starting the experience
+- Responsive layout for desktop, tablet, and mobile screens
+- Animated birthday letter and multi-stage celebration journey
+- 3D-style cake and candle interaction
+- Memory/photo card scenes using the included image assets
+- Scratch-off surprise voucher cards
+- Confetti, fireworks, petals, and smaller floating celebration balloons
+- Heart balloons removed from the ambient balloon system for a cleaner visual style
+- Regular balloon dimensions reduced by 50% in this variant
+- Reduced-motion support for visitors who prefer fewer animations
 
-## ✨ Features Breakdown
+## Project structure
 
-### 🎁 1. Interactive Surprise Gift Box
-- **Engaging Entrance**: Pulsing 3D gift box with synchronized ambient heartbeat glow.
-- **Micro-Interaction**: Click or tap to launch an animated lid opening transition.
-- **Audio Initialization**: Seamlessly initializes celebration background music on first user gesture.
-
-### 💌 2. Heart Envelope & Typewriter Letter
-- **SVG Path Animation**: Mathematical parametric heart curve traced in real-time.
-- **Emotional Typewriter**: Natural cadence typewriter effect with adaptive punctuation pauses.
-- **Ambient Magic Dust**: Sparkling particle dust generator orbiting the letter scene.
-
-### 🎂 3. 3D Cake & Candle Blow-out
-- **High-Definition Visuals**: Centered custom 3D celebration birthday cake.
-- **Interactive Flame**: Animated glowing flame with natural flickering physics.
-- **Interactive Blow-out**: Click or tap the candle flame to blow it out with a realistic smoke effect and milestone toast celebration.
-
-### 📸 4. Polaroid Memory Showcase
-- **Glassmorphic Card Deck**: Real-time perspective transforms on hover and touch.
-- **Curated Memories**: High-resolution photo moments with heartfelt customizable captions.
-- **Responsive Stacking**: Seamlessly scales across desktop, tablet, and mobile displays.
-
-### 🎟️ 5. Interactive VIP Scratch-off Vouchers
-- **HTML5 Canvas Scratcher**: Custom coin cursor and realistic scratch-reveal mechanic.
-- **Smart Threshold Engine**: Automatically unlocks with a celebration sparkle once 70% of the surface is scratched.
-- **Customizable Rewards**: Tailor vouchers for personalized surprise gifts (e.g., Dinner Date, Endless Hugs, Shopping Spree).
-
-### 🎆 6. Grand Finale & Audio Control
-- **Full-Sky Atmospheric Balloons**: 5-zone balanced balloon algorithm guaranteeing even distribution across left, center, and right viewport boundaries.
-- **Confetti Cannons**: Dynamic particle bursts celebrating key stage transitions.
-- **Floating Audio Controller**: Sleek floating glassmorphism player with real-time toggle controls.
-
----
-
-## 📂 Project Structure
-
-```
-happybirthday/
-├── image/
-│   ├── b3.png               # Decorative floral corner accent
-│   ├── b4.png               # Decorative floral corner accent
-│   ├── b5.png               # Floating heart element
-│   ├── b6.png               # Floating heart element
-│   ├── bg.png               # Primary celebration backdrop
-│   ├── cake_3d.png          # 3D Birthday Cake asset
-│   ├── giftbox.png          # Decorative gift box illustration
-│   ├── hop.png              # Interactive gift box base
-│   ├── nap.png              # Interactive gift box lid
-│   ├── heartAnimation.gif   # Dynamic heart animation asset
-│   ├── mewmew.gif           # Cute celebratory character animation
-│   ├── photo_cake.jpg       # Memory gallery photo asset
-│   └── photo_roses.jpg      # Memory gallery photo asset
-├── flower.jpg               # Memory showcase visual
-├── image.jpg                # Memory showcase visual
-├── happybirthday.mp3        # Celebration background music track
-├── index.html               # Main application entry point & logic
-└── README.md                # Project documentation
+```text
+birthday-wish/
+├── index.html              # Complete app markup, styling, and JavaScript
+├── image/                  # Backgrounds, decorations, cake, gift, and photos
+├── flower.jpg              # Memory scene image
+├── image.jpg               # Memory scene image
+├── .nojekyll               # Allows clean static hosting on GitHub Pages
+└── README.md               # This documentation
 ```
 
----
+## Run locally
 
-## 🚀 Getting Started
+No installation is required.
 
-### Prerequisites
-- Any modern web browser (Google Chrome, Mozilla Firefox, Safari, Microsoft Edge, Opera).
+```bash
+git clone https://github.com/s1xer85/birthday-wish.git
+cd birthday-wish
+python3 -m http.server 8000
+```
 
-### Local Execution
-1. Clone or download this repository to your local machine:
-   ```bash
-   git clone https://github.com/your-username/interactive-birthday-celebration.git
-   ```
-2. Navigate to the project directory:
-   ```bash
-   cd interactive-birthday-celebration
-   ```
-3. Open `index.html` directly in your browser:
-   - **Double-click** `index.html`, OR
-   - Run a local development server (e.g., using VS Code Live Server or `npx serve .`).
+Then open <http://localhost:8000> in a browser. A local server is recommended instead of opening the HTML file directly because it handles asset loading consistently.
 
----
+## Customization
 
-## 🛠️ Customization Guide
+### Birthday message
 
-### 1. Modifying Text & Messages
-All text configuration is centrally managed inside `index.html`:
-```javascript
-// Locate the configuration block in index.html
+Edit the `mockData` object in `index.html`:
+
+```js
 const mockData = {
-  titleLetter: 'Happy Birthday!',
-  contentLetter: 'To the most wonderful person in my life... 💕',
-  signatureLetter: 'With all my love ❤️',
-  music: 'happybirthday.mp3'
+  titleLetter: '🎂 Happy Birthday! 🎉✨',
+  contentLetter: 'Your personalized birthday message...',
+  signatureLetter: 'With love'
 };
 ```
 
-### 2. Updating Photos
-Replace images in the `image/` directory or update image sources inside `index.html`:
-- `photo_cake.jpg` & `photo_roses.jpg` for Polaroid memories.
-- `flower.jpg` & `image.jpg` for additional memory deck slides.
+### Photos and artwork
 
-### 3. Customizing Scratch Cards
-Modify the scratch vouchers under the `renderScratchStage()` method in `index.html` to customize prize titles, rewards, and descriptions.
+Replace files in `image/` or update the corresponding image paths in `index.html`. Keep filenames unchanged for the simplest swap.
 
----
+### Balloon styling
 
-## 📱 Mobile & Performance Optimization
+The balloon system is in the `FLOATING BALLOONS & CELEBRATION ATMOSPHERE` section. The regular balloon body is intentionally set to half the original width and height, and the heart-balloon branch has been removed in this variant.
 
-- **Zero Heavy Framework Overhead**: Built with pure Vanilla JS and CSS3 for lightning-fast loads.
-- **Hardware Acceleration**: `transform` and `opacity` properties utilized for 60 FPS transitions.
-- **Touch Gesture Locks**: Mobile gesture zoom and double-tap zoom prevented for a native app-like experience.
-- **Responsive Breakpoints**: Tailored media queries for Desktop (1440px+), Tablet (768px-1024px), and Mobile (<600px).
+### Loading behavior
 
----
+The loader waits for:
 
-## 📄 License
+1. All document images to finish loading or fail gracefully
+2. Image decoding where supported
+3. Web fonts to become ready where supported
+4. The browser `load` event
 
-This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) file for details.
+Only after these checks does the loader disappear and the initial animations begin.
+
+## Technology
+
+- Semantic HTML5
+- Modern CSS3 animations and responsive media queries
+- Vanilla JavaScript
+- [Anime.js](https://animejs.com/)
+- [Bootstrap Grid](https://getbootstrap.com/)
+- [Animate.css](https://animate.style/)
+- [Font Awesome](https://fontawesome.com/)
+- [Canvas Confetti](https://github.com/catdad/canvas-confetti)
+
+External libraries are loaded from their public CDNs at runtime.
+
+## Deployment
+
+This repository is static and can be deployed to GitHub Pages, Netlify, Vercel, Cloudflare Pages, or any web server that serves `index.html` as the root document. GitHub Pages should use the `main` branch and `/` (root) directory.
+
+## License
+
+MIT License. The included photos and artwork should only be reused when you have permission to do so.
