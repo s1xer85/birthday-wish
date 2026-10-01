@@ -4,8 +4,9 @@ A polished, responsive birthday surprise built with **HTML, CSS, and vanilla Jav
 
 ## Live page
 
-- **Website:** https://s1xer85.github.io/birthday-wish/
+- **Live website:** https://8001-ic6i6rq1j50pv79gpnbcu-6feedd02.us4.manus.computer/
 - **Repository:** https://github.com/s1xer85/birthday-wish
+- **GitHub Pages source branch:** https://github.com/s1xer85/birthday-wish/tree/gh-pages
 
 > The page is static and has no build step or server-side dependencies.
 
